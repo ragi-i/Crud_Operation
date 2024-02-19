@@ -1,0 +1,99 @@
+.user-home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+ 
+/* User Details section styles */
+.user-details {
+    flex-basis: 30%;
+    margin-bottom: 20px; 
+}
+ 
+/* All Policies section styles */
+.all-policies {
+    flex-basis: 60%;
+}
+ 
+.all-policies h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+ 
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+ 
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+ 
+th {
+    background-color: #f2f2f2;
+}
+ 
+/* Button styles */
+.add-button {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ 
+.add-button.added {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+ 
+/* Make Claim Button styles */
+.make-claim-button {
+    margin-top: 20px;
+}
+ 
+.claim-button {
+    background-color: rgb(28, 171, 219);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*my policies-table*/
+.my-policies-table {
+   
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    top: 150px;
+    width: 25%; /* Adjust the width as needed */
+    margin-bottom: 20px;
+}
+
+.my-policies-table h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.my-policies-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.my-policies-table th,
+.my-claims-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.my-policies-table th {
+    background-color: #f2f2f2;
+}
