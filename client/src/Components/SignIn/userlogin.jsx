@@ -27,7 +27,7 @@ const UserLogin = () => {
                 console.log(data);
                 // Assuming successful login redirects to user home page
 
-                localStorage.setItem('email',data.email)
+                // localStorage.setItem('email',data.email)
                 // console.log(data.email)
                 navigate('/userhome');
             } 

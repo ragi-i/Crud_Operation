@@ -61,7 +61,7 @@ const registerController = async (req, res) => {
 
 // login controller
 const loginController = async (req, res) => {
-
+console.log("->>>", req.body);
     const { email, password } = req.body;
     try {
         // Check if the user exists with the provided email
@@ -78,13 +78,14 @@ const loginController = async (req, res) => {
         return res.status(200).send({
             status: true,
             message: 'Login Successfully',
-            user
-        }).json({ email: email });
+            user,
+            email
+        })
 
 
     } catch (error) {
         console.log(error)
-        res.status(500).send({
+      return  res.status(500).send({
             success: false,
             message: 'error in Login API',
             error

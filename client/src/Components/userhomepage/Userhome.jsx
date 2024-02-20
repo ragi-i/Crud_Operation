@@ -8,9 +8,22 @@ const UserHomePage = () => {
     useEffect(() => {
         // Fetch all policies from the backend
         axios.get('http://localhost:8080/user/policy')
-            .then(response => setPolicies(response?.data?.policies))
-            .catch(error => console.error('Error fetching policies:', error));
+        .then(response => {
+            // console.log(response.data); 
+            setPolicies(response?.data?.policies);
+       
+        })
+        .catch(error => {
+            console.error('Error fetching policies:', error);
+            // Handle errors here if needed
+        });
+
+        
+        console.log("****",policies);
+           
     }, []);
+    
+    console.log("----->>>", policies)
 
     const handleAddToMyPolicies = (policyId) => {
      
@@ -60,7 +73,7 @@ const UserHomePage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {policies.map(policy => (
+                {policies?.map(policy => (
                         <tr key={policy.policyId}>
                             <tr>{policy.policyId}</tr>
                             <td>{policy.name}</td>

@@ -1,0 +1,147 @@
+version: '3.8'
+
+services:
+  server:  # Renaming 'server' to 'backend'
+    build:
+      context: ./server # Changed context to 'backend'
+      dockerfile: Dockerfile
+    image: node-app
+    container_name: myapp-node-server
+    command: /usr/src/app/node_modules/.bin/nodemon server.js
+    volumes:
+      - ./server/:/usr/src/app  # Changed path to 'backend'
+      - /usr/src/app/node_modules
+    ports:
+      - "8004:8080"
+    depends_on:
+      - mongo
+    env_file: ./server/.env  # Changed path to 'backend'
+    environment:
+      - NODE_ENV=development
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo
+    volumes:
+      - data-volume:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  client:  # Renaming 'client' to 'frontend'
+    build:
+      context: ./client  # Changed context to 'frontend'
+      dockerfile: Dockerfile
+    image: react-app
+    container_name: myapp-react-client
+    command: npm start
+    volumes:
+      - ./client/:/usr/app  # Changed path to 'frontend'
+      - /usr/app/node_modules
+    depends_on:
+      - server
+    ports:
+      - "3004:3000"
+    networks:
+      - app-network 
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  data-volume:
+  node_modules:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# version: '3.7'
+
+# services:
+#   server:
+#     build:
+#       context: ./server
+#       dockerfile: Dockerfile
+#     image: myapp-server
+#     container_name: myapp-node-server
+#     command: /usr/src/app/node_modules/.bin/nodemon server.js
+#     volumes:
+#       - ./server/:/usr/src/app
+#       - /usr/src/app/node_modules
+#     ports:
+#       - "8000:8080"
+#     depends_on:
+#       - mongo
+#     env_file: ./server/.env
+#     environment:
+#       - DEV_MODE=development
+#     networks:
+#       - app-network
+#   mongo:
+#     image: mongo
+#     volumes:
+#       - data-volume:/data/db
+#     ports:
+#       - "27017:27017"
+#     networks:
+#       - app-network
+#   client:
+#     build:
+#       context: ./client
+#       dockerfile: Dockerfile
+#     image: myapp-client
+#     container_name: myapp-react-client
+#     command: npm start
+#     volumes:
+#       - ./client/:/usr/app
+#       - /usr/app/node_modules
+#     depends_on:
+#       - server
+#     ports:
+#       - "3001:3000"
+#     networks:
+#       - app-network
+
+# networks:
+#     app-network:
+#         driver: bridge
+
+# volumes:
+#     data-volume:
+#     node_modules:
+#     web-root:
+#       driver: local
