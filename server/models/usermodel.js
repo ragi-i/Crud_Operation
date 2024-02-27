@@ -20,7 +20,7 @@ const claimSchema = new mongoose.Schema({
   policyId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Policy',
-    type:String,
+    type:Number,
     required: true
   },
   amountRequested: {
